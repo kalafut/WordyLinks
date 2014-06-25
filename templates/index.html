@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+{{ template "head.html" . }}
+<body>
+<div class="container">
+    <div class="row header">
+        <div class="col-xs-6">
+            <span onclick="window.location.href='/'" class="title">wordy links</span>
+        </div>
+        <div class="col-xs-6 text-right"><a href="about" class="help">About</a></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form method="post" name="new_url" action="save" id="submit_form" class="form-horizontal main-form">
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-2">
+                        <button type="button" id="save-btn" class="btn {{ .SaveClass }} mode-btn">Save</button>
+                        <button type="button" id="load-btn" style="margin-left:1em;" class="btn {{ .LoadClass }} mode-btn">Load</button>
+                    </div>
+                </div>
+                <div id="link-ctrl" class="{{ .LinkErrorClass }} form-group">
+                    <label for="url" class="control-label col-sm-2">URL</label>
+                    <div class="col-sm-6">
+                        <input id="url" type="text" name="url" placeholder="example.com" class="form-control" value="{{ .LinkValue }}">
+                        <span class="control-label help-inline">{{ .LinkErrorMsg }}</span>
+                    </div>
+                </div>
+                <div class="{{ .KeywordErrorClass }} form-group">
+                    <label for="keywords" class="control-label col-sm-2">Keywords</label>
+                    <div class="col-sm-6">
+                        <input id="keywords" type="text" name="words" placeholder="memorable keywords like these" class="form-control" value="{{ .KeywordValue }}">
+                        <span class="control-label help-inline">{{ .KeywordErrorMsg }}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-2">
+                        <button id="submit_btn" class="btn btn-primary"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>var saveSuccess ={{ .SaveSuccess }};</script>
+
+<script src='{{ .Bust "/static/all.js" }}'></script>
+
+
+{{ template "ga.html" }}
+</body>
+</html>
+

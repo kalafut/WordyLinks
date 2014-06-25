@@ -1,0 +1,80 @@
+body {
+    background-color: #f5eedf;
+    color: #34495e;
+    font-family: "Lucida Sans Unicode","Lucida Grande",sans-serif;
+}
+
+input, button {
+    font-family: "Lucida Sans Unicode","Lucida Grande",sans-serif;
+}
+
+
+p.about { text-indent: 2em }
+.hidden {display:none;}
+#cover {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #f5eedf; z-index:9999;}
+h1.header { font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; }
+.main-form { margin-top: 5em; }
+span.title {
+    font-size: 130%;
+    font-weight: bold;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    padding: 0.25em;
+    border: 2px solid #999;
+    background: white;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+.header {
+    margin-top: 2em;
+}
+
+a.help {
+    font-size: 130%;
+    font-weight: bold;
+    text-decoration:none;
+    color: #34495e;
+}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+
+.btn {
+    color: #fff;
+    padding: 9px 12px 10px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.25s;
+    border: 0;
+}
+
+.btn:focus {
+    outline-style: none;
+}
+
+.btn-primary {
+    background-color: #1abc9c;
+}
+.btn-primary:hover {
+    background-color: #48c9b0;
+}
+
+.btn-nonsel {
+    color: #34495e;
+    background-color: #fff;
+}
+
+.btn-nonsel:hover {
+    color: #34495e;
+    background-color: #d3d3d3;
+}
+
+.btn-sel, .btn-sel:focus {
+    color: #fff;
+    background-color: #34495e;
+}
+.btn-sel:hover {
+    color: #fff;
+    background-color: #415b76;
+}

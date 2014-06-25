@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+{{ template "head.html" . }}
+<body>
+<div class="container">
+    <div class="row header">
+        <div class="col-xs-6">
+            <span onclick="window.location.href='/'" class="title">wordy links</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-2">
+            <h3>What?</h3>
+            <p>Quickly associate a URL with a set of keywords that you choose and later jump to that address using those keywords. Keywords can be anything you'll find memorable. Keyword order matters, but spaces and capitalization don't.</p>
+
+            <h3>Why?</h3>
+            <p>Sometimes you just need to get an unwieldy URL between devices. Shortened URLs aren't memorable, and other options usually involve bookmarks, sending yourself emails, etc. <strong>Wordy Links</strong> requires no accounts, apps or syncing.</p>
+
+            <h3>Are keyword entries deleted?</h3>
+            <p>No, but after 30 days of disuse, someone else can associate them with a different URL.</p>
+
+            <h3>More information</h3>
+            <p>This site was my first non-trivial <a href="http://golang.org/">Go</a> program. Source code is <a href="https://github.com/kalafut/WordyLinks">available on Github</a></p>
+        </div>
+    </div>
+</div>
+{{ template "ga.html" }}
+</body>
+</html>

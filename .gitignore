@@ -1,0 +1,6 @@
+node_modules
+*.swp
+*.swo
+wordylinks
+all.js
+all.css

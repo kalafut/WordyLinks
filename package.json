@@ -1,0 +1,23 @@
+{
+  "name": "wordylinks",
+  "version": "0.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.org/kalafut/wordylinks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-uncss": "~0.4.4",
+    "gulp": "~3.7.0",
+    "gulp-concat": "~2.2.0",
+    "gulp-uglify": "~0.3.0",
+    "gulp-minify-css": "~0.3.4",
+    "gulp-if": "~1.2.1"
+  }
+}
