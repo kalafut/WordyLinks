@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"encoding/json"
+	"flag"
 	"html/template"
 	"log"
 	"net/http"
@@ -25,6 +26,7 @@ var db PostgresDB
 var numRequests int
 var templates = template.Must(template.ParseGlob("templates/*.html"))
 var indexCache []byte
+var debug bool
 
 type TmplData struct {
 	SaveSuccess                                      bool
@@ -55,6 +57,8 @@ func main() {
 
 func init() {
 	db = NewPostgresDB(expirationDuration)
+	flag.BoolVar(&debug, "debug", false, "debug mode")
+	flag.Parse()
 }
 
 func about(w http.ResponseWriter, r *http.Request) {
@@ -79,7 +83,7 @@ func load(w http.ResponseWriter, r *http.Request) {
 			http.Redirect(w, r, "/", 302)
 
 		case err != nil:
-			log.Fatal(err)
+			log.Print(err)
 
 		default:
 			http.Redirect(w, r, url, 302)
@@ -97,6 +101,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 		SaveClass: "btn-sel",
 		LoadClass: "btn-nonsel",
 	}
+
+	if debug {
+		templates = template.Must(template.ParseGlob("templates/*.html"))
+	}
+
 	cookie, err := getAndClearCookie(w, r)
 
 	if err == nil {
@@ -124,7 +133,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 		}
 		templates.ExecuteTemplate(w, "index.html", &tmpl)
 	} else {
-		if indexCache == nil {
+		if indexCache == nil || debug {
 			var s bytes.Buffer
 
 			templates.ExecuteTemplate(&s, "index.html", &tmpl)
@@ -153,16 +162,19 @@ func save(w http.ResponseWriter, r *http.Request) {
 	if valid {
 		err := db.Save(words, url)
 
-		if err != nil {
-			cookie.KeywordError = err.Error()
-		} else {
+		switch err {
+		case nil:
 			cookie.Operation = saveSuccess
-		}
-		cookie.setCookie(w)
 
-	} else {
-		cookie.setCookie(w)
+		case KeywordsInUse:
+			cookie.KeywordError = err.Error()
+
+		default:
+			log.Print(err)
+		}
 	}
+
+	cookie.setCookie(w)
 
 	http.Redirect(w, r, "/", 303)
 }

@@ -19,15 +19,10 @@ function setupForm(duration) {
         if ($('#link-ctrl').css('display') === 'none') {
             $('#link-ctrl').slideDown(duration);
         }
-        if(saveSuccess) {
-            $('#submit_btn').text("Link Saved!");
-            saveSuccess = false;
-            setTimeout(setupForm, 2000);
-        } else {
-            $('#submit_btn').text("Save");
-        }
         $('#submit_form').attr('action', 'save');
         $('#url').focus();
+
+        setTimeout(function() { $("#success_msg").css("visibility", "hidden"); }, 2000);
     } else {
         $('#link-ctrl').slideUp(duration);
         $('#submit_btn').text("Load");

@@ -5,7 +5,7 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var uncss = require('gulp-uncss');
 
-var debug = false;
+var debug = true;
 gulp.task('scripts', function() {
     gulp.src(['./js/zepto.js', './js/fx.js', './js/event.js','./js/zepto-slide-transition.js', './js/main.js'])
     .pipe(concat('all.js', {newLine: ';'}))
@@ -23,10 +23,10 @@ gulp.task('templates', function() {
 gulp.task('css', function() {
     gulp.src(['./css/bootstrap.min.css', './css/main.css'])
     .pipe(concat('all.css'))
-    .pipe(uncss({
+    .pipe(gulpif(!debug, uncss({
         html: ['./templates/head.html', './templates/index.html', './templates/about.html'],
         ignore: [/btn-sel/, /btn-nonsel/, /has-error/]
-     }))
+     })))
     .pipe(gulpif(!debug, minifyCSS()))
     .pipe(gulp.dest('./static/'));
 });

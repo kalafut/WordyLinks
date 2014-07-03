@@ -37,7 +37,7 @@ func (db PostgresDB) Load(keywords string) (string, error) {
 		err = KeywordsNotFound
 
 	case err != nil:
-		log.Fatal(err)
+		log.Print(err)
 	}
 
 	return url, err
