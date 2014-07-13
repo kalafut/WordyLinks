@@ -19,6 +19,7 @@ function setupForm(duration) {
         if ($('#link-ctrl').css('display') === 'none') {
             $('#link-ctrl').slideDown(duration);
         }
+        $('#submit_btn').text("Save");
         $('#submit_form').attr('action', 'save');
         $('#url').focus();
 
