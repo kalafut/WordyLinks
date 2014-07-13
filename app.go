@@ -62,6 +62,9 @@ func init() {
 }
 
 func about(w http.ResponseWriter, r *http.Request) {
+	if debug {
+		templates = template.Must(template.ParseGlob("templates/*.html"))
+	}
 	templates.ExecuteTemplate(w, "about.html", &TmplData{})
 }
 
