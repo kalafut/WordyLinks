@@ -1,1 +1,1 @@
-The source code behind <a href="http://wordylinks.com">WordyLinks</a>.
+The source code behind <a href="http://wordylinks.kalafut.net">WordyLinks</a>.
